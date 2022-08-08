@@ -2,8 +2,15 @@
 cmake_minimum_required(VERSION 3.10)
 
 set(my_source 
-    ./src/hello_action.c
+    ./src/add.c
+    ./test/add_test.c
 )
+
+set(my_include 
+    ./module/acutest/include
+)
+
+include_directories(${my_include})
 
 project(hello_action VERSION 1.0)
 
