@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 set(my_source 
     ./src/add.c
     ./test/add_test.c
+    ./module/acutest/include/acutest.h
 )
 
 set(my_include 
