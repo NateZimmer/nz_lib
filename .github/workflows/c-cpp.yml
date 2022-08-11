@@ -25,5 +25,6 @@ jobs:
         files: nz_lib_unit_test
         body: This is some release text
         name: MyRelease1
+        tag_name: MyRelease1
 
   
