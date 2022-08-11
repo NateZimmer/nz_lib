@@ -1,0 +1,19 @@
+name: PR Test
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - name: build
+      run: mkdir build && cd build && cmake .. && make
+    - name: run
+      run: cd build && chmod 777 nz_lib_unit_test && ./nz_lib_unit_test
