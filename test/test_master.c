@@ -1,13 +1,9 @@
 
 #include "acutest.h"
-#include "../src/add.h"
 
-void test_add()
-{
-    TEST_CHECK( add(1,2)==3);
-}
+#include "pcap_test.h"
 
 TEST_LIST = {
-    { "Testing add", test_add },
+    { "PCAP Utils", test_pcap },
     { NULL, NULL }     /* zeroed record marking the end of the list */
 };

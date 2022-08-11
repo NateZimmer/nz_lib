@@ -18,4 +18,4 @@ jobs:
     - name: build
       run: mkdir build && cd build && cmake .. && make
     - name: run
-      run: cd build && chmod 777 hello_action && ./hello_action
+      run: cd build && chmod 777 nz_lib_unit_test && ./nz_lib_unit_test
