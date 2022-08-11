@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.10)
 
 set(my_source 
     ./src/pcap_util/pcap_util.c
+    ./src/ring_buf/ring_buf.c
     ./test/pcap_test.c
+    ./test/ring_test.c
     ./test/test_master.c
 )
 
