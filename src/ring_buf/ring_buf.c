@@ -3,6 +3,11 @@
 #include <string.h>
 #include "ring_buf.h"
 
+/**
+ * @brief initialize ring buffer
+ * @param[in] buf - Pointer to ring buf struct, see ring_buf_t
+ * @param[in] len - Length of buffer in bytes 
+ */
 void ring_buf_init(ring_buf_t * buf, uint16_t len)
 {
   if(buf == NULL)
@@ -18,11 +23,22 @@ void ring_buf_init(ring_buf_t * buf, uint16_t len)
   memset(buf->data, 0, len);
 }
 
+/**
+ * @brief gets the length of bytes in buffer 
+ * @param[in] buf - Pointer to ring buf struct, see ring_buf_t
+ */
 uint16_t ring_buf_len(ring_buf_t * buf)
 {
   return buf->head >= buf->tail ? (buf->head - buf->tail) : ((buf->total_size + buf->data) - buf->tail) + (buf->head - buf->data);
 }
 
+/**
+ * @brief add bytes into ring buffer 
+ * @param[in] buf - Pointer to ring buf struct, see ring_buf_t
+ * @param[in] data - Pointer to buffer to be filled into ring buffer
+ * @param[in] len - length of data in bytes
+ * @return overflow, true if an overflow occurred 
+ */
 bool ring_buf_add(ring_buf_t * buf, uint8_t * data, uint16_t len)
 {
   bool overflow = false; 
@@ -38,11 +54,13 @@ bool ring_buf_add(ring_buf_t * buf, uint8_t * data, uint16_t len)
   return overflow;
 }
 
-void ring_buf_reset(ring_buf_t * buf)
-{
-  buf->head = buf->tail;
-}
-
+/**
+ * @brief get bytes from ring buffer 
+ * @param[in] buf - Pointer to ring buf struct, see ring_buf_t
+ * @param[out] data - Pointer to buffer to be filled into ring buffer
+ * @param[in] len - length of data in bytes
+ * @return bytes read, will be less than len if amount in buffer is less than len
+ */
 uint16_t ring_buf_get(ring_buf_t * buf, uint8_t * data, uint16_t len)
 {
   uint16_t bytes_read = 0;
@@ -57,4 +75,13 @@ uint16_t ring_buf_get(ring_buf_t * buf, uint8_t * data, uint16_t len)
     buf->tail = buf->tail >= (buf->data + buf->total_size) ? buf->data : buf->tail; // wrap if needed
   }
   return bytes_read;
+}
+
+/**
+ * @brief clears out data in buffer
+ * @param[in] buf - Pointer to ring buf struct, see ring_buf_t
+ */
+void ring_buf_reset(ring_buf_t * buf)
+{
+  buf->head = buf->tail;
 }

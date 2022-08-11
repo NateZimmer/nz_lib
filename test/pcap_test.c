@@ -12,5 +12,6 @@ void test_pcap()
     fp = pcap_initialize(NULL, 147);
     pcap_write_packet(data, sizeof(data), &fp);
     pcap_write_packet(data, sizeof(data), &fp);
+    TEST_CHECK( fp != NULL);
 }
 
