@@ -24,7 +24,6 @@ jobs:
       with:
         files: build/nz_lib_unit_test
         body: This is some release text
-        name: MyRelease2
         tag_name: MyRelease-1.0.0.${{github.run_number}}
 
   
