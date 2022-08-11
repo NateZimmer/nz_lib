@@ -22,9 +22,9 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v0.1.14
       with:
-        files: nz_lib_unit_test
+        files: build/nz_lib_unit_test
         body: This is some release text
-        name: MyRelease1
-        tag_name: MyRelease1
+        name: MyRelease2
+        tag_name: MyRelease-1.0.0.${{github.run_number}}
 
   
