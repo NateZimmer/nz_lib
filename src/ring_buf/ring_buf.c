@@ -85,4 +85,3 @@ void ring_buf_reset(ring_buf_t * buf)
 {
   buf->head = buf->tail;
 }
-
