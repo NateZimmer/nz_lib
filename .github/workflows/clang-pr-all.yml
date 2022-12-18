@@ -1,4 +1,4 @@
-name: "format code"
+name: "format all code"
 
 # run on pull requests to develop
 on:
@@ -7,7 +7,7 @@ on:
       - master
 jobs:
   format:
-    runs-on: alpine-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -15,9 +15,9 @@ jobs:
       # format the latest commit
       - name: Run clang format
         run: |
-          apk add clang python3 git
-          git fetch origin main:main
-          git reset --hard main
+          apt install clang-format 
+          git fetch origin master:master
+          git reset --hard master
           find . -iname *.h -o -iname *.c | xargs clang-format -i -style=file
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
