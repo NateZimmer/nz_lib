@@ -11,13 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: master
+          ref: ${{ github.head_ref }}
       # format the latest commit
       - name: Run clang format
         run: |
           sudo apt install -y clang-format 
-          git fetch origin master:master
-          git reset --hard master
           find . -iname *.h -o -iname *.c | xargs clang-format -i -style=file
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
