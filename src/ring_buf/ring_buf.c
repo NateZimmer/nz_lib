@@ -84,5 +84,5 @@ uint16_t ring_buf_get(ring_buf_t * buf, uint8_t * data, uint16_t len)
 void ring_buf_reset(ring_buf_t * buf)
 {
   buf->head = buf->tail;
-      int i = 0; 
+        int i = 0; 
 }
