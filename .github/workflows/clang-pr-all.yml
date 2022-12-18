@@ -26,3 +26,4 @@ jobs:
           commit-message: Format code
           title: Automated format PR
           body: Automated PR to format codebase
+          
